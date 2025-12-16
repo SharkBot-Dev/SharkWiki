@@ -108,19 +108,33 @@ def wiki_view(code):
 
     html = markdown.markdown(
         page[1],
-        extensions=["fenced_code", "tables"]
+        extensions=[
+            "fenced_code",
+            "tables",
+            "codehilite"  # ← 追加（任意）
+        ]
     )
 
     allowed_tags = set(bleach.sanitizer.ALLOWED_TAGS)
+
     allowed_tags.update([
         "p", "pre", "code",
         "h1", "h2", "h3",
-        "table", "tr", "td", "th"
+        "table", "tr", "td", "th",
+        "blockquote", "ul", "ol", "li",
+        "strong", "em", "hr", "br",
+        "a", "img", "thead", "tbody",
     ])
+
+    allowed_attrs = {
+        "a": ["href", "title"],
+        "img": ["src", "alt", "title"]
+    }
 
     html = bleach.clean(
         html,
         tags=allowed_tags,
+        attributes=allowed_attrs,
         strip=True
     )
 
