@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Wiki一覧{% endblock %}
+
+
+{% block content %}
+<div class="box">
+<h2>ページ一覧</h2>
+<ul>
+{% for code, title, user in pages %}
+<li>
+<a href="/wiki/{{ code }}">{{ title }}</a>
+<small>({{ user }})</small>
+</li>
+{% endfor %}
+</ul>
+</div>
+{% endblock %}

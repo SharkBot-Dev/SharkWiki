@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}編集: {{ title }}{% endblock %}
+
+
+{% block content %}
+<div class="box">
+<h2>ページ編集</h2>
+<form method="post">
+<p>タイトル</p>
+<input name="title" value="{{ title }}" required>
+
+
+<p>本文（Markdown）</p>
+<textarea name="text">{{ text }}</textarea>
+
+
+<br><br>
+<button>保存</button>
+</form>
+</div>
+{% endblock %}

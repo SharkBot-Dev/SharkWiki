@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Wiki{% endblock %}</title>
+        <style>
+        body { font-family: sans-serif; background:#f6f6f6; margin:0; }
+        header { background:#222; color:#fff; padding:10px; }
+        header a { color:#fff; margin-right:10px; text-decoration:none; }
+        main { padding:20px; background-color: darkgray; }
+        .box { background:#fff; padding:15px; border-radius:6px; }
+        textarea { width:100%; height:300px; }
+        button { padding:6px 12px; }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="/">Wiki</a>
+            {% if is_admin %}
+            <a href="/admin/wiki/create">新規作成</a>
+            <a href="/logout">ログアウト</a>
+            {% else %}
+            <a href="/login">ログイン</a>
+            {% endif %}
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </body>
+</html>

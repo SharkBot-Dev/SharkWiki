@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+<div class="box">
+<h1>{{ title }}</h1>
+<div>{{ html | safe }}</div>
+<hr>
+<small>作成者: {{ author }}</small>
+
+
+{% if is_admin %}
+<hr>
+<a href="/admin/wiki/edit/{{ code }}">✏ 編集</a>
+<form method="post" action="/admin/wiki/delete/{{ code }}" style="display:inline">
+<button onclick="return confirm('削除しますか？')">🗑 削除</button>
+</form>
+{% endif %}
+</div>
+{% endblock %}

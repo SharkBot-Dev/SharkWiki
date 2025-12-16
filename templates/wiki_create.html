@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}新規Wiki作成{% endblock %}
+
+
+{% block content %}
+<div class="box">
+<h2>新規ページ作成</h2>
+<form method="post">
+<p>タイトル</p>
+<input name="title" required>
+
+
+<p>本文（Markdown）</p>
+<textarea name="text"></textarea>
+
+
+<br><br>
+<button>作成</button>
+</form>
+</div>
+{% endblock %}
